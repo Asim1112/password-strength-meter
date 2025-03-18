@@ -10,31 +10,47 @@ st.markdown("""
                 font-family: "Arial", sans-serif;
             }
 
-            .stTextInput > div > div input {
-                background-color: white;
-                color: #2E8B57;
-                border-radius: 10px;
-                padding: 12px 15px;
-                border: 2px solid #8A2BE2;
-            }
+     .stTextInput > div > div input {
+    background-color: #F0F5FA; /* Cool Light Gray */
+    color: #1A3A5A; /* Royal Blue */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 12px 15px;
+    border: 2px solid #0056A6; /* Bold Blue */
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: inset 0px 2px 5px rgba(0, 86, 166, 0.2);
+}
 
-            .stButton > button {
-                background: linear-gradient(135deg, #1F487E , #5D737E);
-                color: #F0F8FF;
-                font-size: 16px;
-                font-weight: bold;
-                padding: 10px;
-                border-radius: 12px;
-                border: none;
-                transition: 0.3s;
-                cursor: pointer; 
-            }
+.stTextInput > div > div input:focus {
+    border-color: #0077C8; /* Vibrant Blue */
+    box-shadow: 0px 0px 10px rgba(0, 86, 166, 0.5);
+    background-color: #E6EFF8; /* Frosty Light Blue */
+}
 
-            .stButton > button:hover {
-                background: linear-gradient(135deg, #1A3742, #3A6D85);
-                color: white;
-            
-            }
+
+.stButton > button {
+    background: #E0F7FA; /* Pale Blue */
+    color: #003366; /* Deep Navy */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 2px solid #0077B6;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 119, 182, 0.3);
+}
+
+.stButton > button:hover {
+    background: #B2EBF2;
+    border-color: #0099CC;
+    box-shadow: 0px 8px 16px rgba(0, 119, 182, 0.5);
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+
     </style>
 """, 
     unsafe_allow_html=True)
@@ -44,27 +60,51 @@ st.markdown("""
 
 #Title
 st.markdown("""
-<h1 style='
+<style>
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; text-shadow: 0 0 10px #0ff, 0 0 20px #00f; }
+    100% { opacity: 1; }
+}
+.flicker {
     text-align: center;
     font-size: 3rem;
-    font-wight: bold;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #6A11CB, #2575FC);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 8px rgba(106, 17, 203, 0.5)
-  '>
-    Password Strength Meter
-    </h1>
- """,
- unsafe_allow_html=True)
+    font-weight: bold;
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f;
+    animation: flicker 1.5s infinite alternate;
+}
+</style>
+
+<h1 class='flicker'>Password Strength Meter</h1>
+""", unsafe_allow_html=True)
+
+
+st.markdown(
+    """
+    <style>
+    .password-container {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .password-label {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 
 # special characters for password validation
 special_characters = "!@#$%^&*"
 
 # input for password
-password = st.text_input("Enter your password:", type = "password", key="password_input")
+st.markdown('<div class="password-container"><span class="password-label">Enter your password:</span></div>', unsafe_allow_html=True)
+password = st.text_input("", type="password", key="password_input")
 
 
     
